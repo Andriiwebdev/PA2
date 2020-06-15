@@ -30,9 +30,9 @@ function onAngleChange(alpha, beta, gamma) {
 function getQuaternion(alpha, beta, gamma) {
     const toRadian = grad => grad * Math.PI / 180;
 
-    let _x = toRadian(beta); // beta
-    let _y = toRadian(gamma); // gamma
-    let _z = toRadian(alpha); // alpha
+    let _x = beta ? toRadian(beta) : 0; // beta
+    let _y = gamma ? toRadian(gamma) : 0; // gamma
+    let _z = alpha ? toRadian(alpha) : 0; // alpha
 
     let cX = Math.cos(_x / 2);
     let cY = Math.cos(_y / 2);
@@ -65,13 +65,13 @@ function setupTargetObject() {
     const loader = new THREE.TextureLoader();
     const materials = [
         new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-1.jpg')}),
-        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-2.jpg')}),
-        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-3.jpg')}),
-        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-4.jpg')}),
-        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-5.jpg')}),
-        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-6.jpg')}),
+        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-1.jpg')}),
+        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-1.jpg')}),
+        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-1.jpg')}),
+        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-1.jpg')}),
+        new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-1.jpg')}),
       ];
-    const surfaceMesh = new THREE.Mesh(geometry, materials);
+    const surfaceMesh = new THREE.Mesh(geometry,  new THREE.MeshBasicMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-1.jpg')}));
     surfaceMesh.position.set(0, 0, -25);
 
     return surfaceMesh;
