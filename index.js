@@ -45,6 +45,11 @@ function getQuaternion(alpha, beta, gamma) {
     let x = sX * cY * cZ - cX * sY * sZ;
     let y = cX * sY * cZ + sX * cY * sZ;
     let z = cX * cY * sZ + sX * sY * cZ;
+    
+    w = w * 10;
+    x = x * 10;
+    y = y * 10;
+    z = z * 10;
 
     return new THREE.Quaternion(x, y, z, w);// [ w, x, y, z ];
 }
